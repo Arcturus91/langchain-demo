@@ -3,8 +3,9 @@ import os
 import dotenv
 import uuid
 
-# Only use pysqlite3 on Linux
-if os.name == 'posix' and os.uname().sysname == 'Linux':
+
+# check if it's linux so it works on Streamlit Cloud
+if os.name == 'posix':
     __import__('pysqlite3')
     import sys
     sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
